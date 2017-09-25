@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.curso.projetodeestudo_rxjava_kotlin_retrofit"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Rx Java
+    compile 'io.reactivex:rxjava:1.2.5'
+    //Rx Android para termos acesso ao main thread do Android
+    compile 'io.reactivex:rxandroid:1.2.1'
+    //Retrofit
+    compile "com.squareup.retrofit2:retrofit:2.3.0"
+    //Adapter do retrofit para retornar objetos observáveis
+    compile "com.squareup.retrofit2:adapter-rxjava:2.1.0"
+    //Converter do Retrofit para utilizar o GSON para tratar a resposta do servidor
+    compile "com.squareup.retrofit2:converter-gson:2.1.0"
+    //Interceptor para visualizar os logs das requisições do Retrofit
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile "com.squareup.okhttp3:logging-interceptor:3.6.0"
+
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.0.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
+}
